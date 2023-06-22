@@ -7,19 +7,27 @@ jobs:
   build:
     name: "Generate index.html"
     runs-on: ubuntu-latest
-
     steps:
     - name: "Checkout"
       uses: actions/checkout@v3
-
-    - name: "Checkout gh-pages"
-      uses: actions/checkout@v3
-      args:
-        ref: gh-pages
-        fetch-depth: 0
-
-    - name: "Update index.html"
+    - name: "Create Pages Archive"
       run: |
-        python3 <(git show ${{ github.ref }}:ascii.py) > index.html
-        git commit -m "Update index.html" index.html
-        git push origin gh-pages
+        python3 ascii.py > index.html
+        tar cf - index.html | gzip > github-pages.tar.gz
+    - name: "Upload Archive"
+      uses: actions/upload-pages-artifact@v1
+
+  deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: $
+    needs: build
+    steps:
+      - name: Deploy artifact
+        id: deployment
+        uses: actions/deploy-pages@v1
