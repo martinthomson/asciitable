@@ -1,8 +1,8 @@
 name: "Update GitHub Pages"
 
 on:
-  push
-    branches: ["main"]
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -31,4 +31,4 @@ jobs:
     steps:
       - name: Deploy artifact
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
