@@ -43,23 +43,28 @@ print(
 <head>
   <title>ASCII Table</title>
   <style type="text/css">
-:root { --double: 3px double #555; }
-body { font-family: monospace; }
+
+:root {
+  --double: 3px double #555;
+}
+body { font-family: monospace; color: #555; }
 table { border-collapse: collapse; margin: 1em auto; }
-table :is(th, td) {
-  border: 1px solid #bbb;
-}
-table :is(th, td):nth-child(3n) {
-  border-right: var(--double);
-}
-table :is(thead, tbody) {
-  border: var(--double);
-}
+th, td { border: 1px solid #bbb; }
+:is(th, td):nth-child(3n) { border-right: var(--double); }
+table :is(thead, tbody) { border: var(--double); }
 th { font-size: 80%; }
 td[class] { padding: 0.2em 2ch; }
-td:not([class]) { padding: 0.2em 1ch; color: #484848; text-align: right; }
-td.named { color: #c8451d; }
-td.lit { color: #080891; }
+td:not([class]) { padding: 0.2em 1ch; text-align: right; }
+td.n { color: #c8451d; }
+td.l { color: #080891; }
+/* dark */
+@media (prefers-color-scheme: dark) {
+:root { --double: 3px double #ccc; }
+body { color: #aaa; background-color: #111; }
+th, td { border-color: #555; }
+td.n { color: #d7623e; }
+td.l { color: #6d6dd7; }
+}
   </style>
 </head>
 <body>
@@ -76,11 +81,11 @@ for r in range(0, 32):
     for c in range(0, 4):
         v = c * 32 + r
         if v in names:
-            cls = "named"
+            cls = "n"
             s = names[v][0]
             tip = f' title="{names[v][1]}"'
         else:
-            cls = "lit"
+            cls = "l"
             s = str(bytes([v]), encoding="utf-8")
             tip = ""
             assert s.isprintable()
