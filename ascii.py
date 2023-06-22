@@ -43,11 +43,11 @@ print(
 <head>
   <title>ASCII Table</title>
   <style type="text/css">
-:root { --double: 3px double black; }
+:root { --double: 3px double #555; }
 body { font-family: monospace; }
-table { border-collapse: collapse; }
+table { border-collapse: collapse; margin: 1em auto; }
 table :is(th, td) {
-  border: 1px solid grey;
+  border: 1px solid #bbb;
 }
 table :is(th, td):nth-child(3n) {
   border-right: var(--double);
@@ -56,10 +56,10 @@ table :is(thead, tbody) {
   border: var(--double);
 }
 th { font-size: 80%; }
-td { padding: 0.2em 1ch; }
-td[^class] { width: 5ch; text-align: right; }
-td.named { color: orange; width: 6ch; }
-td.lit { color: blue; }
+td[class] { padding: 0.2em 2ch; }
+td:not([class]) { padding: 0.2em 1ch; color: #484848; text-align: right; }
+td.named { color: #c8451d; }
+td.lit { color: #080891; }
   </style>
 </head>
 <body>
