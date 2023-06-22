@@ -1,7 +1,8 @@
-name: "Update GitHub Pages
+name: "Update GitHub Pages"
 
 on:
-  push:
+  push
+    branches: ["main"]
 
 jobs:
   build:
