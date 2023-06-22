@@ -41,6 +41,7 @@ print(
     """<!doctype HTML>
 <html>
 <head>
+  <title>ASCII Table</title>
   <style type="text/css">
 :root { --double: 3px double black; }
 body { font-family: monospace; }
