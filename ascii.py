@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import html
+
 names = {
     0: ("NUL", "null"),
     1: ("SOH", "start of heading"),
@@ -43,10 +45,7 @@ print(
 <head>
   <title>ASCII Table</title>
   <style type="text/css">
-
-:root {
-  --double: 3px double #555;
-}
+:root { --double: 3px double #555; }
 body { font-family: monospace; color: #555; }
 table { border-collapse: collapse; margin: 1em auto; }
 th, td { border: 1px solid #bbb; }
@@ -57,7 +56,6 @@ td[class] { padding: 0.2em 2ch; }
 td:not([class]) { padding: 0.2em 1ch; text-align: right; }
 td.n { color: #c8451d; }
 td.l { color: #080891; }
-/* dark */
 @media (prefers-color-scheme: dark) {
 :root { --double: 3px double #ccc; }
 body { color: #aaa; background-color: #111; }
@@ -86,7 +84,7 @@ for r in range(0, 32):
             tip = f' title="{names[v][1]}"'
         else:
             cls = "l"
-            s = str(bytes([v]), encoding="utf-8")
+            s = html.escape(str(bytes([v]), encoding="utf-8"))
             tip = ""
             assert s.isprintable()
         print(f"      <td>{v}</td><td>0x{v:0>2x}</td>", end="")
