@@ -84,7 +84,7 @@ for r in range(0, 32):
             tip = f' title="{names[v][1]}"'
         else:
             cls = "l"
-            s = html.escape(str(bytes([v]), encoding="utf-8"))
+            s = html.escape(str(bytes([v]), encoding="utf-8"), quote=False)
             tip = ""
             assert s.isprintable()
         print(f"      <td>{v}</td><td>0x{v:0>2x}</td>", end="")
