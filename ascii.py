@@ -35,7 +35,7 @@ names = {
     29: ("GS", "group separator"),
     30: ("RS", "record separator"),
     31: ("US", "unit separator"),
-    31: ("SP", "space"),
+    32: ("SP", "space"),
     127: ("DEL", "delete"),
 }
 
