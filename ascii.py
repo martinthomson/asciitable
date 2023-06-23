@@ -48,14 +48,14 @@ print(
 :root { --double: 3px double #555; }
 body { font-family: monospace; color: #555; }
 table { border-collapse: collapse; margin: 1em auto; }
-th, td { border: 1px solid #bbb; }
+th, td { border: 1px solid #bbb; min-width: 3ch; }
 :is(th, td):nth-child(3n) { border-right: var(--double); }
 table :is(thead, tbody) { border: var(--double); }
 th { font-size: 80%; }
 td[class] { padding: 0.2em 2ch; }
 td:not([class]) { padding: 0.2em 1ch; text-align: right; }
 td.n { color: #c8451d; }
-td.l { color: #080891; }
+td.l { color: #080891; text-align: center; }
 @media (prefers-color-scheme: dark) {
 :root { --double: 3px double #ccc; }
 body { color: #aaa; background-color: #111; }
