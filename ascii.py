@@ -46,7 +46,7 @@ print(
   <title>ASCII Table</title>
   <style type="text/css">
 :root { --double: 3px double #555; }
-body { font-family: monospace; color: #555; }
+body { font: min(2.2vw, 16px) monospace; color: #555; }
 table { border-collapse: collapse; margin: 1em auto; }
 th, td { border: 1px solid #bbb; min-width: 3ch; }
 :is(th, td):nth-child(3n) { border-right: var(--double); }
