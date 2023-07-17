@@ -49,7 +49,7 @@ print(
 body { font: min(2.2vw, 16px) monospace; color: #555; }
 table { border-collapse: collapse; margin: 1em auto; }
 th, td { border: 1px solid #bbb; min-width: 3ch; }
-:is(th, td):nth-child(3n) { border-right: var(--double); }
+:is(th, td):nth-child(3n+1) { border-left: var(--double); }
 table :is(thead, tbody) { border: var(--double); }
 th { font-size: 80%; }
 td[class] { padding: 0.2em 2ch; }
