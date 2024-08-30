@@ -16,7 +16,7 @@ jobs:
         mkdir -p _site
         python3 ascii.py > _site/index.html
     - name: "Upload Archive"
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
 
   deploy:
     permissions:
@@ -31,4 +31,4 @@ jobs:
     steps:
       - name: Deploy artifact
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
