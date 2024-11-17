@@ -47,21 +47,29 @@ print(
   <style type="text/css">
 :root { --double: 3px double #555; }
 body { font: min(2.2vw, 16px) monospace; color: #555; }
-table { border-collapse: collapse; margin: 1em auto; }
-th, td { border: 1px solid #bbb; min-width: 3ch; }
-:is(th, td):nth-child(3n+1) { border-left: var(--double); }
-table :is(thead, tbody) { border: var(--double); }
+table {
+  border-collapse: collapse; margin: 1em auto;
+  :is(thead, tbody) { border: var(--double); }
+}
+th, td {
+  border: 1px solid #bbb; min-width: 3ch;
+  &:nth-child(3n+1) { border-left: var(--double); }
+}
 th { font-size: 80%; }
-td[class] { padding: 0.2em 2ch; }
-td:not([class]) { padding: 0.2em 1ch; text-align: right; }
-td.n { color: #c8451d; }
-td.l { color: #080891; text-align: center; }
+td { padding: 0.2em 1ch; text-align: right; }
+td:nth-child(3n) {
+  padding: 0.2em 2ch; text-align: center; color: #080891;
+  &[title] { color: #c8451d; }
+}
+
 @media (prefers-color-scheme: dark) {
 :root { --double: 3px double #ccc; }
 body { color: #aaa; background-color: #111; }
 th, td { border-color: #555; }
-td.n { color: #d7623e; }
-td.l { color: #6d6dd7; }
+td:nth-child(3n) {
+  color: #6d6dd7;
+  &[title] { color: #d7623e; }
+}
 }
   </style>
 </head>
@@ -88,7 +96,7 @@ for r in range(0, 32):
             tip = ""
             assert s.isprintable()
         print(f"      <td>{v}</td><td>0x{v:0>2x}</td>", end="")
-        print(f'<td class="{cls}"{tip}>{s}</td>')
+        print(f'<td {tip}>{s}</td>')
 
     print("    </tr>")
 
